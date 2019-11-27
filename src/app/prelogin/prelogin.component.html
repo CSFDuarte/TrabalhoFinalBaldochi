@@ -1,0 +1,85 @@
+<div *ngIf="premenu == 'new'" style="padding-bottom: 120px;">
+<form action="action_page.php" method="post">
+        <h1 style="text-align: center;">Sua Conta</h1>
+
+        <div class="container">
+    
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Email" name="email"  [(ngModel)]= "usuario.email" required>
+            
+          
+          <button type="submit" style="background-color: darkviolet; border-style: outset; border-width: 3px;" (click)="salvar()" >Logar</button>
+    
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="premenu == 'user'">
+        <form action="action_page.php" method="post">
+            <h1 style="text-align: center; font-size: 25px;">Email já Cadastrado</h1>
+            <h2 style="text-align: center; font-size: 20px;"> Por favor confira suas informações</h2>
+          
+            <div class="container">
+              <label for="pnome"><b>Primeiro Nome</b></label>
+              <input type="text" value="{{users[0].fname}}" name="pnome" required>
+        
+              <label for="unome"><b>Ultimo Nome</b></label>
+              <input type="text" value="{{users[0].lname}}" name="unome" required>
+        
+              <label for="email"><b>Email</b></label>
+              <input type="text" value="{{users[0].email}}" name="email" required>
+                
+              <p style = "margin-top: 40px; margin-bottom: 40px; font-size: 15px;"><b>Endereço</b></p> 
+        
+              <label for="rua"><b>Rua</b></label>
+              <input type="text" value="{{users[0].street}}" name="rua" required>
+        
+              <label for="cidade"><b>Cidade</b></label>
+              <input type="text" value="{{users[0].city}}" name="cidade" required>
+        
+              <label for="estado"><b>Estado</b></label>
+              <input type="text" maxlength="2" value="{{users[0].state}}" name="estado" required>
+        
+              <label for="cep"><b>CEP</b></label>
+              <input type="text" maxlength="9" value="{{users[0].zip}}" name="cep" required>
+          
+              <button type="submit" style="background-color: darkviolet; border-style: outset; border-width: 3px;" (click)="getID()">Terminar a Compra</button>
+        
+            </div>
+          </form>
+    </div>
+
+  <div *ngIf="premenu == 'notuser'">
+        <form action="action_page.php" method="post">
+            <h1 style="text-align: center; font-size: 25px;">Email não Cadastrado</h1>
+            <h2 style="text-align: center; font-size: 20px;"> Por favor insira suas informações</h2>
+          
+            <div class="container">
+              <label for="fnome"><b>Primeiro Nome</b></label>
+              <input type="text" placeholder="Primeiro Nome" name="fname" [(ngModel)]="usuario.fname" required>
+
+              <label for="lnome"><b>Ultimo Nome</b></label>
+              <input type="text" placeholder="Último Nome" name="lname" [(ngModel)]="usuario.lname" required>
+        
+              <label for="email"><b>Email</b></label>
+              <input type="text" value="{{usuario.email}}" name="email" required>
+                
+              <p style = "margin-top: 40px; margin-bottom: 40px; font-size: 15px;"><b>Endereço</b></p> 
+        
+              <label for="street"><b>Rua</b></label>
+              <input type="text" placeholder="Rua" name="street" [(ngModel)]="usuario.street" required>
+        
+              <label for="city"><b>Cidade</b></label>
+              <input type="text" placeholder="Cidade" name="city" [(ngModel)]="usuario.city" required>
+        
+              <label for="state"><b>Estado</b></label>
+              <input type="text" maxlength="2" placeholder="Estado" name="state" [(ngModel)]="usuario.state" required>
+        
+              <label for="zip"><b>CEP</b></label>
+              <input type="text" maxlength="9" placeholder="CEP" name="zip" [(ngModel)]="usuario.zip" required>
+          
+              <button type="submit" style="background-color: darkviolet; border-style: outset; border-width: 3px;" (click)="salvarusuario()">Salvar</button>
+        
+            </div>
+          </form>
+    </div>

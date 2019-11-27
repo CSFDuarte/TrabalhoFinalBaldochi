@@ -1,0 +1,77 @@
+<div class="row container" style="margin: 0 auto;">
+  <div class="col-sm-12 col-md-3">
+    <div class="row container">
+
+        
+        <button class="botao" style="margin-left: 80px;" (click)="mudahome()" >
+            Home
+        </button>
+
+      
+        <div class="cardpesq col-sm-12" style="border: outset; padding: 0; margin-top: 40px;">
+            <div class="card-header" style="background-color: #e3f2fd;">
+              Pesquisar
+            </div>
+            <div class="card-body">
+                <div class="md-form mt-0">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="margin-top: 20px" [(ngModel)]="pesquisa">
+                  </div>
+                  <button class="botao" (click)="salvar()">
+                      Pesquisar
+                  </button>
+            </div>
+          </div>
+        
+        
+      <div class="cardpesq col-sm-12" style="border: outset; padding: 0; margin-top: 100px; margin-bottom: 50px;">
+          <div class="card-header" style="background-color: #e3f2fd;">
+            Categorias
+          </div>
+          <div class="card-body" style="margin-left: 10px;">
+              <div class="row" *ngFor="let c of category">
+                  <a class="btn btn-outline-success" style="border-color: darkviolet; margin-top: 4px;" (click)="pesquisar(c.CategoryName)" >{{c.CategoryName}}</a>
+              </div>
+          </div>
+      </div>  
+      
+      
+
+        
+    
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-9">
+    <div class="ui items" *ngIf="homepage == 'home'">
+      <app-bookrow
+        *ngFor="let b of bookrandom"
+        [book]="b"
+        (selected)="itemSelected($event)">
+      </app-bookrow>
+    </div>
+    <div class="ui items" *ngIf="homepage == 'pesquisa'">
+      <app-bookrow
+        *ngFor="let b of booksnoduppesquisa"
+        [book]="b" 
+        (selected)="itemSelected($event)"
+        >
+      </app-bookrow>
+    </div>
+    <div class="ui items" *ngIf="homepage == 'presentbook'">
+      <app-presentbook [book]="bookpresent" [autores]="autores" [categorias]="categorias" (mudar)="Event($event)">
+      </app-presentbook>
+    </div>
+    <div class="ui items" *ngIf="homepage == 'site'">
+        <app-presentsite>
+        </app-presentsite>
+      </div>
+    <div class="ui items" *ngIf="homepage == 'carrinho'">
+          <app-carrinho>
+          </app-carrinho>
+    </div>
+  </div>
+</div>
+
+
+
+  

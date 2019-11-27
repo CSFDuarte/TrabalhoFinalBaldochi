@@ -1,0 +1,47 @@
+<div id="content">
+        <div class="card mb-3" style="max-width: 800px;" *ngIf="menu == 'present'">
+                <h5 class="card-title" style="color: blue; margin-top: 30px; margin-left: 30px; font-size: 20px;">{{book.title}}</h5>
+                <p style="margin-left: 60px;">Escrito por 
+                    <a style ="font-size: 15px;" *ngFor = "let b of autores">{{b}}, </a>
+                </p>
+                <div class="row no-gutters">
+                  <div class="img" style="margin-top: 10px; margin-left: 40px;">
+                    <img (click)="alteramenu('fotogrande')" src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{book.ISBN}}.01.MZZZZZZZ.jpg" class="card-img">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body" style="margin-left: 30px;">   
+                      <p class="card-price" style= "font-size: 20px;">Nosso preço: R$ <a style= "font-size: 20px; color: red;">{{book.price}}</a></p>
+                      <p class="card-isbn" style="margin-top: 40px; font-size: 10px;"><a style= "font-weight: bold;">ISBN: </a>{{book.ISBN}}</p>
+                      <p class="card-pub" style="font-size: 10px;"><a style= "font-weight: bold;">Editora: </a>{{book.publisher}}</p>
+                      <p class="card-pag" style="font-size: 10px;"><a style= "font-weight: bold;">Páginas: </a>{{book.pages}}</p>
+                      <p class="card-pub" style="font-size: 10px;"><a style= "font-weight: bold;">Edição: </a>{{book.edition}}</p>
+                  </div>
+                  </div>
+                  <div style="margin-left: 25px; margin-right: 15px;">
+                        <p class="card-text">{{book.description.substring(3, ((book.description.length)-4) )}}</p>
+                  </div>
+                </div>
+                <div class="carrinho" style="text-align: center; margin-bottom: 15px;">
+                    <button class="botao" (click)="addcarrinho()" >
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+              </div>
+         <div class="card mb-3" *ngIf="menu == 'fotogrande'">
+                  <div>
+                    <button class="botao" (click)="alteramenu('present')" style="margin-top: 10px; margin-bottom: 15px; margin-left: 350px;">Voltar</button>
+                  </div>
+                  <div class="img">
+                      <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{book.ISBN}}.01.LZZZZZZZ.jpg" class="card-img">
+                  </div>
+                  <div>
+                      <button class="botao" (click)="alteramenu('present')" style="margin-top: 10px; margin-bottom: 15px; margin-left: 350px;">Voltar</button>
+                  </div>
+              
+         </div>
+
+              
+
+
+</div>
+

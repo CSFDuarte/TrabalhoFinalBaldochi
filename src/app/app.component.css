@@ -1,0 +1,8 @@
+.botao{
+    height:50px;
+    width:100px;
+    color: cornsilk;
+    background-color: darkviolet;
+    border-style: outset;
+    border-width: 4px;
+}

@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd; height: 150px;">
+  <a class="navbar-brand"><img src="assets/logo_book_store.png" style="border-style: outset; border-width: 4px;"/></a>
+
+
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+      <div class = "divbotao" style="margin-right: 100px; margin-left: auto;">
+        <div class='divbotao' style="text-align:center;">
+          <button class="botao"  (click)="Meucarrinho()" style = "margin-right: 20px;">
+            Meu carrinho
+          </button>
+          <button class="botao"  (click)="menuapp = 'prelogin'" (click)="changeMenu()">
+            Minha Conta
+          </button>
+        </div>
+        </div>
+  </div>
+
+
+</nav>
+
+<div class="row" *ngIf="globals.menu == 'prelogin'">
+    <div class="col-md-12">
+      <app-prelogin (botao)="Event()">
+      </app-prelogin>
+    </div>
+  </div>
+
+<div class="row" *ngIf="globals.menu == 'home'">
+    <div class="col-md-12">
+      <app-home [site]="site" >
+      </app-home>
+    </div>
+</div>
+
+<div class="row" *ngIf="globals.menu == 'continuar'">
+    <div class="col-md-12">
+      <app-home [site]="site" >
+      </app-home>
+    </div>
+</div>
+
+<div class="row" *ngIf="globals.menu == 'site'">
+    <div class="col-md-12">
+      <app-home [site]="site" >
+      </app-home>
+    </div>
+</div>
+
+
+<footer class="page-footer font-small blue pt-4" style="background-color: #e3f2fd ;">
+
+ 
+    <div class="container-fluid text-center text-md-left">
+        <h5 class="text-uppercase" style="text-align: center; margin-bottom: 30px;">Informações</h5>
+
+      <div class="row">
+          
+        <div class="col-md-3 mt-md-0 mt-3">
+  
+          
+          <p style="text-align: center; color: blue; text-decoration: underline; cursor: pointer; font-size: 15px;" (click)="site = 'home'" (click)="menuapp = 'home'" (click)="changeMenu()">Home</p>
+  
+        </div>
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+  
+
+        <div class="col-md-3 mb-md-0 mb-3">
+            <p style="text-align: center; color: blue; text-decoration: underline; cursor: pointer; font-size: 15px;" (click)="menuapp = 'site'" (click)="site='site'" (click)="changeMenu()" >Sobre este site</p>
+          
+        </div>
+        
+        <div class="col-md-3 mb-md-0 mb-3">
+            <a href="https://pt.stackoverflow.com/"><p style="text-align: center; color: blue; text-decoration: underline; cursor: pointer; font-size: 15px;">Site de apoio</p></a>
+      
+        </div>
+
+        <div class="col-md-3 mb-md-0 mb-3">
+          <a href="https://angular.io/docs"><p style="text-align: center; color: blue; text-decoration: underline; cursor: pointer; font-size: 15px;">Angular</p></a>
+    
+      </div>
+      </div>
+    </div>
+  </footer>

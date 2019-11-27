@@ -1,0 +1,98 @@
+<div id="content" *ngIf = "menucarrinho == 'car'">
+
+    <div *ngIf= "globals.menu=='home'" style="text-align: center; margin-top: 30px;">
+        <button class= "botao" style="font-size: 20px;" (click)="globals.menu = 'continuar'">
+            Continuar Comprando
+        </button>
+    </div>
+
+    <div *ngIf= "globals.menu=='continuar'" style="text-align: center; margin-top: 30px;">
+        <button class= "botao" style="font-size: 20px;" (click)="globals.menu = 'home'">
+            Continuar Comprando
+        </button>
+    </div>
+
+        <h5 class="card-title" style="margin-top: 40px; margin-left: 30px; font-size: 20px; text-align: center;">Seu carrinho possui <a style="color: darkviolet;">{{globals.ISBNcarrinho.length}}</a> itens</h5>
+        
+        <div >
+        
+            <div class="card mb-3" style="max-width: 800px;">
+                    <table class="table">
+                        <thead>
+                              <tr>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Total</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody >
+                              <tr *ngFor="let c of carrinho" style="font-size: 15px;">
+
+                                <td style="color: blue;">{{c.title}}</td>
+                                <td>{{c.quantidade}}</td>
+                                <td style="color: tomato;">{{c.price}}</td>
+                                <td style="color: tomato;">{{c.subtotal}}</td>
+                                <td><button class= "botao" (click)="add(c.ISBN)">add</button></td>
+                                <td><button class= "botao" (click)="remove(c.ISBN)">rem</button></td>
+                              </tr>
+                            </tbody>
+                          </table>  
+            </div>
+        <div>
+          <h1 style="text-align: right; color: tomato;">Total Compra: {{totalcompra}}</h1>
+        </div>
+
+        <div *ngIf="globals.IDuser != 0" style="text-align: center; margin-top: 40px;">
+          <button class= "botao" style="font-size: 20px; margin-right: 20px;" (click)="fecharpedido()">
+            Fechar Pedido
+          </button>
+          <button class= "botao" style="font-size: 20px; margin-left: 20px;" (click)="historico()">
+            Meu Histórico de Compra
+          </button>
+
+        </div>
+        <div *ngIf="globals.IDuser == 0" style="text-align: center; margin-top: 40px;">
+          <h3 style= "font-size: 20px;">Usuario não logado</h3>
+          <button class= "botao" style="font-size: 20px;" (click)="globals.menu = 'prelogin'">
+            Fazer Login
+          </button>
+
+        </div>
+
+</div>       
+
+</div>
+
+<div id="content" *ngIf = "menucarrinho == 'historico'">
+
+  <div *ngIf= "globals.menu=='home'" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <button class= "botao" style="font-size: 20px;" (click)="globals.menu = 'continuar'">
+          Continuar Comprando
+      </button>
+  </div>
+
+  <div *ngIf= "globals.menu=='continuar'" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <button class= "botao" style="font-size: 20px;" (click)="globals.menu = 'home'">
+          Continuar Comprando
+      </button>
+  </div>
+
+  <div>
+    <h1 class="card-title" style="font-size: 20px; text-align: center;">Meu Historico de Compras</h1>
+    <div class="card mb-3" style="max-width: 800px;" >
+      <div class="media" *ngFor="let i of item" style="margin-top: 20px; margin-left: 20px;">
+            
+        <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{ i.ISBN }}.01.THUMBZZZ.jpg">
+
+        
+          <a class="media-heading" style = "margin-left: 20px; font-size: 15px; "><b>OrderID: {{i.orderID}}</b></a>
+          <p class="media-heading" style = "margin-left: 20px; font-size: 15px; ">Data: {{i.date}}</p>
+          <p class="media-heading" style = "margin-left: 20px; font-size: 15px; ">Quantidade: {{i.quantidade}}</p>
+        
+    </div>
+    </div>
+  </div>
+
+  </div>

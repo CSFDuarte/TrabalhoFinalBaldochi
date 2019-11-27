@@ -1,0 +1,21 @@
+
+<div class="card" style="width: 50rem;height:20rem; margin-left:auto; margin-right:250px; margin-top: 20px; margin-bottom: 20px;">    
+    <div class="card-body">
+      <span class="fake-link2" (click)="apresenta(book.ISBN)" >{{book.title}}</span>
+
+      <div class="media">
+            
+            <img (click)="apresenta(book.ISBN)" src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{ book.ISBN }}.01.THUMBZZZ.jpg">
+
+            <div class="media-body">
+                <p class="media-heading" style="padding: 9px 9px 9px 9px;">{{book.description.substring(3,200)}}...  <span class="fake-link" id="fake-link-1" (click)="apresenta(book.ISBN)">mais</span></p>
+            </div>
+        </div>
+        
+
+    </div>
+  </div>
+
+
+
+  
